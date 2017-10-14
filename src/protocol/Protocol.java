@@ -30,6 +30,7 @@ public class Protocol {
     
     /**
      * Constructs an instance of a protocol for communication with the BattleShipServer
+     * 
      * @param player A reference to a BattleShipPlayer object
      * @param host The host name or IP address of the BattleShipServer
      * @param port The port of the BattleShipServer
@@ -62,6 +63,7 @@ public class Protocol {
     
     /**
      * Helper method used for establishing the connection with the BattleShipServer
+     * 
      * @return true if connection established, false otherwise.
      */
     private boolean connect(){
@@ -91,6 +93,7 @@ public class Protocol {
             
     /**
      * Helper method to process a given message from the BattleShipServer
+     * 
      * @param message the message to process
      */
     private void processMessage(String message) {
@@ -151,28 +154,31 @@ public class Protocol {
 
     /**
      * Helper method to send the Player's name to the BattleShipServer
+     * 
      * @param name The name to send to the BattleShipServer
      */
     private void sendName(String name) {
         if(!running) return;
-        out.println(name);
+        out.printf("%s\n", name);
     }
 
     /**
      * Helper method to send the Player's desired shot location to the BattleShipServer in the correct format
+     * 
      * @param coords The coordinates to send to the BattleShipServer
      */
     private void sendShotLocation(int[] coords) {
         if(!running) return;
-        out.printf("[%d, %d]", coords[0], coords[1]);
+        out.printf("[%d, %d]\n", coords[0], coords[1]);
     }
 
     /**
      * Helper method to send the Player's ShipLayout to the BattleShipServer in the correct format
+     * 
      * @param layout The layout to send to the BattleShipServer
      */
     private void sendShipLayout(ShipLayout layout) {
         if(!running) return;
-        out.printf("%s", layout.toString());
+        out.printf("%s\n", layout.toString());
     }
 }

@@ -1,5 +1,7 @@
 package gameobjects;
 
+import util.Constants;
+
 /**
  *
  * @author aaron
@@ -24,11 +26,12 @@ public class JavaBoss implements BattleShipPlayer{
     @Override
     public ShipLayout getShipLayout(){
         ShipLayout layout = new ShipLayout();
-        layout.placeShip("C", 0, 0, "h");
-        layout.placeShip("B", 0, 2, "h");
-        layout.placeShip("S", 0, 4, "h");
-        layout.placeShip("D", 0, 6, "h");
-        layout.placeShip("P", 0, 8, "h");
+        
+        layout.placeShip(Constants.CARRIER, 0, 0, Constants.HORIZONTAL);
+        layout.placeShip(Constants.BATTLESHIP, 0, 2, Constants.HORIZONTAL);
+        layout.placeShip(Constants.SUBMARINE, 0, 4, Constants.HORIZONTAL);
+        layout.placeShip(Constants.DESTROYER, 0, 6, Constants.HORIZONTAL);
+        layout.placeShip(Constants.PATROL, 0, 8, Constants.HORIZONTAL);
         
         return layout;
     }
@@ -40,7 +43,7 @@ public class JavaBoss implements BattleShipPlayer{
     
     @Override
     public void gameOver(boolean won){
-        System.out.println("I " + (won?"won":"lost"));
+        
     }
     
 }

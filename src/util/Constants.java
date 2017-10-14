@@ -5,16 +5,25 @@ package util;
  * @author aaron
  */
 public class Constants {
+    /**The HIT result from a shot in the game*/
     public static final String HIT          = "HIT";
+    /**The MISS result from a shot in the game*/
     public static final String MISS         = "MISS";
-     
+    
+    /**The carrier's ship id*/
     public static final String CARRIER      = "C";
+    /**The battleships's ship id*/
     public static final String BATTLESHIP   = "B";
+    /**The submarine's ship id*/
     public static final String SUBMARINE    = "S";
+    /**The destroyer's ship id*/
     public static final String DESTROYER    = "D";
+    /**The patrol boat's ship id*/
     public static final String PATROL       = "P";
     
+    /**The horizontal orientation*/
     public static final String HORIZONTAL   = "h";
+    /**The vertical orientation*/
     public static final String VERTICAL     = "v";
     
     /**

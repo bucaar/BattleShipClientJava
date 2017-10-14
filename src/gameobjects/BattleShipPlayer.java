@@ -14,7 +14,7 @@ public interface BattleShipPlayer {
     int[] getShotLocation();
     
     /**
-     * This method is called by the protocol when it is time to place the ships
+     * This method is called by the protocol when it is time to place your ships
      * 
      * @return A reference to a ShipLayout object containing the placed ships
      */
@@ -26,8 +26,15 @@ public interface BattleShipPlayer {
      * @param yourShot If you made this shot, this value will be true.  False if it was your opponent's shot
      * @param x The x coordinate of the shot
      * @param y The y coordinate of the shot
-     * @param result The result of the shot.  Will be one of {Constants.CARRIER, Constants.BATTLESHIP, Constants.SUBMARINE, Constants.DESTROYER, Constants.PATROL}
-     * @param shipSunk If this shot caused a ship to sink, this will be one of {
+     * @param result The result of the shot.  Will be one of:
+     *      <ul><li>Constants.HIT</li>
+     *          <li>Constants.MISS</li></ul>
+     * @param shipSunk If this shot caused a ship to sink, this will be one of:
+     *      <ul><li>Constants.CARRIER</li>
+     *          <li>Constants.BATTLESHIP</li>
+     *          <li>Constants.SUBMARINE</li>
+     *          <li>Constants.DESTROYER</li>
+     *          <li>Constants.PATROL</li></ul>
      */
     void shotNotification(boolean yourShot, int x, int y, String result, String shipSunk);
     
