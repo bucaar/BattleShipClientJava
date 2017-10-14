@@ -5,16 +5,10 @@ package gameobjects;
  * @author aaron
  */
 public class Board {
-    private ShipLayout layout;
     private String[][] tiles;
     
     public Board(){
         this.tiles = new String[10][10];
-        this.layout = new ShipLayout();
-    }
-    
-    public void placeShip(String ship, int x, int y, String orientation){
-        layout.placeShip(ship, x, y, orientation);
     }
     
     public void hit(int x, int y){
@@ -37,10 +31,6 @@ public class Board {
         }
         ship = "" + ship.toUpperCase().charAt(0);
         tiles[x][y] = ship;
-    }
-    
-    public ShipLayout getShipLayout(){
-        return layout;
     }
     
 }
