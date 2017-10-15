@@ -28,20 +28,20 @@ public class ShipLayoutTest {
     public void testPlaceShip() {
         ShipLayout instance = new ShipLayout();
         
-        assertEquals(instance.toJSON(), "{}");
+        assertEquals(instance.toString(), "{}");
         
         // "C": [0, 0, "h"]
         instance.placeShip("C", 0, 0, "H");
-        assertEquals(instance.toJSON(), "{\"C\": [0, 0, \"h\"]}");
+        assertEquals(instance.toString(), "{\"C\": [0, 0, \"h\"]}");
         
         instance.placeShip("p", 0, 1, "v");
-        assertEquals(instance.toJSON(), "{\"C\": [0, 0, \"h\"], \"P\": [0, 1, \"v\"]}");
+        assertEquals(instance.toString(), "{\"C\": [0, 0, \"h\"], \"P\": [0, 1, \"v\"]}");
         
         instance.placeShip("D", 0, 3, "v");
-        assertEquals(instance.toJSON(), "{\"C\": [0, 0, \"h\"], \"D\": [0, 3, \"v\"], \"P\": [0, 1, \"v\"]}");
+        assertEquals(instance.toString(), "{\"C\": [0, 0, \"h\"], \"D\": [0, 3, \"v\"], \"P\": [0, 1, \"v\"]}");
         
         instance.placeShip("D", 7, 3, "h");
-        assertEquals(instance.toJSON(), "{\"C\": [0, 0, \"h\"], \"D\": [7, 3, \"h\"], \"P\": [0, 1, \"v\"]}");
+        assertEquals(instance.toString(), "{\"C\": [0, 0, \"h\"], \"D\": [7, 3, \"h\"], \"P\": [0, 1, \"v\"]}");
     }
     
 }
