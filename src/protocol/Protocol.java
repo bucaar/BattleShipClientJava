@@ -98,6 +98,10 @@ public class Protocol {
      */
     private void processMessage(String message) {
         switch(message.toUpperCase().substring(0, 3)){
+            case "HEL":
+                System.out.println(player.getClass().getSimpleName());
+                disconnect();
+                break;
             case "NAM":
                 sendName(player.getClass().getSimpleName());
                 break;
