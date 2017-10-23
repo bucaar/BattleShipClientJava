@@ -4,7 +4,7 @@ import util.Constants;
 
 /**
  *
- * @author aaron
+ * @author Aaron Buchholz
  */
 public class ShipLayout {
     

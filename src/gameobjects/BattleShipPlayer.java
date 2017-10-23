@@ -2,7 +2,7 @@ package gameobjects;
 
 /**
  *
- * @author aaron
+ * @author Aaron Buchholz
  */
 public interface BattleShipPlayer {
 

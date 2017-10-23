@@ -13,7 +13,7 @@ import util.Constants;
 
 /**
  *
- * @author aaron
+ * @author Aaron Buchholz
  */
 public class BattleShipPlayerTest {
     private BattleShipPlayer player;
@@ -76,17 +76,12 @@ public class BattleShipPlayerTest {
         return myPlayer;
     }
     
-    @Test(timeout = 1000L)
-    public void testGetShipLayout(){
-        //get the JSON string
+    private int[][] getPlayerBoard(BattleShipPlayer p){
         String enemyLayout = player.getShipLayout().toString();
         enemyLayout = enemyLayout.substring(1, enemyLayout.length()-1);
-        if(enemyLayout.length() == 0){
-            fail("ShipLayout is not placing any ships.");
-        }
         
         //keep track of which cells are already occupied
-        String[][] board = new String[10][10];
+        int[][] board = new int[10][10];
         
         //for every placed ship
         String[] ships = enemyLayout.split("], ");
@@ -113,27 +108,18 @@ public class BattleShipPlayerTest {
                 case "B": length = 4; break;
                 case "S": case "D": length = 3; break;
                 case "P": length = 2; break;
-                default:  fail("Invalid ship id placed: " + id); 
             }
 
             int width=1, height=1;
             switch(o){
                 case "h": width  *= length; break;
                 case "v": height *= length; break;
-                default:  fail("Invalid ship orientation " + o);
             }
 
-            if(width > 1 && height > 1){
-                fail("Something really bad happened");
-            }
-
-            for(int bx=x;bx<x+width;bx++){
-                for(int by=y;by<y+height;by++){
+            for(int bx=x; bx<x+width; bx++){
+                for(int by=y; by<y+height; by++){
                     try{
-                        if(board[bx][by] != null){
-                            fail("Placement of ship " + id + " overlaps with ship " + board[bx][by]);
-                        }
-                        board[bx][by] = id;
+                        board[bx][by] += 1;
                     }
                     catch(IndexOutOfBoundsException e){
                         fail("Ship " + id + " was placed out of bounds at " + bx + ", " + by);
@@ -141,10 +127,37 @@ public class BattleShipPlayerTest {
                 }
             }
         }
+        
+        return board;
+    }
+    
+    @Test(timeout = 1000L)
+    public void testGetShipLayout_ensureShipsPlaced(){
+        int[][] board = getPlayerBoard(player);
+        for(int[] row : board){
+            for(int col : row){
+                if(col > 0){
+                    return;
+                }
+            }
+        }
+        fail("This test fails if there were not any ships placed on the board.");
+    }
+    
+    @Test(timeout = 1000L)
+    public void testGetShipLayout_ensureNotOverlapping(){
+        int[][] board = getPlayerBoard(player);
+        for(int[] row : board){
+            for(int col : row){
+                if(col > 1){
+                    fail("This test fails if there were any overlapping ships placed on the board");
+                }
+            }
+        }
     }
     
     @Test(timeout = 5000L)
-    public void testGetShotLocation(){
+    public void testGetShotLocation_fullGame(){
         //placements of test's ships
         int[][][] myShipCoords = new int[][][]{
             {{0,0},{1,0},{2,0},{3,0},{4,0}},
@@ -172,19 +185,20 @@ public class BattleShipPlayerTest {
                 }
                 enemyShots[enemyShot[0]][enemyShot[1]] = true;
                 int hitShip = -1;
-            search:
-                for(int myShip=0; myShip < myShipCoords.length; myShip++){
-                    for(int[] coords : myShipCoords[myShip]){
-                        if(coords[0] == enemyShot[0] && coords[1] == enemyShot[1]){
-                            hitShip = myShip;
-                            break search;
+                search:{
+                    for(int myShip=0; myShip < myShipCoords.length; myShip++){
+                        for(int[] coords : myShipCoords[myShip]){
+                            if(coords[0] == enemyShot[0] && coords[1] == enemyShot[1]){
+                                hitShip = myShip;
+                                break search;
+                            }
                         }
                     }
                 }
                 if(hitShip != -1){
                     if(++myShipHitCount[hitShip] == myShipCoords[hitShip].length){
                         player.shotNotification(true, enemyShot[0], enemyShot[1], Constants.HIT, myShipLabels[hitShip]);
-                        if(++myShipSunkCount == 5){
+                        if(++myShipSunkCount == myShipCoords.length){
                             break;
                         }
                     }

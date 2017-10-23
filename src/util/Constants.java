@@ -2,7 +2,7 @@ package util;
 
 /**
  *
- * @author aaron
+ * @author Aaron Buchholz
  */
 public class Constants {
     /**The HIT result from a shot in the game*/

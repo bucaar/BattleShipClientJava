@@ -12,7 +12,7 @@ import util.Constants;
 /**
  * The class used for communication with the BattleShipServer
  * 
- * @author aaron
+ * @author Aaron Buchholz
  */
 public class Protocol {
 
@@ -27,6 +27,20 @@ public class Protocol {
     private PrintWriter out;
     
     private boolean running;
+    
+    /**
+     * Constructs an instance of a protocol for communication with the BattleShipServer
+     * 
+     * @param player A reference to a BattleShipPlayer object
+     * @param port The port of the BattleShipServer
+     */
+    public Protocol(BattleShipPlayer player, int port){
+        this.player = player;
+        this.port = port;
+        
+        this.host = "localhost";
+        this.running = false;
+    }
     
     /**
      * Constructs an instance of a protocol for communication with the BattleShipServer
