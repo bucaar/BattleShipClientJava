@@ -5,6 +5,7 @@
  */
 package util;
 
+import ProvidedClasses.Constants;
 import com.sun.corba.se.impl.orbutil.closure.Constant;
 import org.junit.Test;
 import static org.junit.Assert.*;

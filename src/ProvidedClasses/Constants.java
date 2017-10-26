@@ -1,8 +1,8 @@
-package util;
+package ProvidedClasses;
 
 /**
  *
- * @author Aaron Buchholz
+ * @author aabuchho
  */
 public class Constants {
     /**The HIT result from a shot in the game*/

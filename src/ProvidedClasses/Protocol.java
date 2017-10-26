@@ -1,18 +1,16 @@
-package protocol;
+package ProvidedClasses;
 
-import gameobjects.BattleShipPlayer;
+import BattleShip.BattleShipPlayer;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
-import gameobjects.ShipLayout;
-import util.Constants;
 
 /**
  * The class used for communication with the BattleShipServer
  * 
- * @author Aaron Buchholz
+ * @author aabuchho
  */
 public class Protocol {
 

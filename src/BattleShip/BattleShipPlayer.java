@@ -1,8 +1,10 @@
-package gameobjects;
+package BattleShip;
+
+import ProvidedClasses.ShipLayout;
 
 /**
  *
- * @author Aaron Buchholz
+ * @author aabuchho
  */
 public interface BattleShipPlayer {
 

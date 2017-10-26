@@ -1,10 +1,8 @@
-package gameobjects;
-
-import util.Constants;
+package ProvidedClasses;
 
 /**
  *
- * @author Aaron Buchholz
+ * @author aabuchho
  */
 public class ShipLayout {
     

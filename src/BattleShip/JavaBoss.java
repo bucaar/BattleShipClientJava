@@ -1,6 +1,7 @@
-package gameobjects;
+package BattleShip;
 
-import util.Constants;
+import ProvidedClasses.ShipLayout;
+import ProvidedClasses.Constants;
 
 /**
  *
